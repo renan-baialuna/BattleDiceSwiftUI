@@ -29,9 +29,40 @@
 		800976F02F522CD500B3D089 /* BattleDiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BattleDiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		805C5FCE2F55D5FF00BFD1F1 /* Exceptions for "BattleDice" folder in "BattleDiceTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Domain/Dice.swift,
+				Domain/DiceSet.swift,
+				Domain/Enum/DiceEnum.swift,
+				Domain/Enum/PhasesEnum.swift,
+				Domain/Protocols/Order.swift,
+				Domain/RollSet.swift,
+			);
+			target = 800976E52F522CD500B3D089 /* BattleDiceTests */;
+		};
+		805C5FCF2F55D5FF00BFD1F1 /* Exceptions for "BattleDice" folder in "BattleDiceUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Domain/Dice.swift,
+				Domain/DiceSet.swift,
+				Domain/Enum/DiceEnum.swift,
+				Domain/Enum/PhasesEnum.swift,
+				Domain/Protocols/Order.swift,
+				Domain/RollSet.swift,
+			);
+			target = 800976EF2F522CD500B3D089 /* BattleDiceUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		800976D62F522CD100B3D089 /* BattleDice */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				805C5FCE2F55D5FF00BFD1F1 /* Exceptions for "BattleDice" folder in "BattleDiceTests" target */,
+				805C5FCF2F55D5FF00BFD1F1 /* Exceptions for "BattleDice" folder in "BattleDiceUITests" target */,
+			);
 			path = BattleDice;
 			sourceTree = "<group>";
 		};
