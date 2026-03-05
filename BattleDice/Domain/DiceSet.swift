@@ -22,6 +22,8 @@ struct DiceSet {
         }
         self.totalResult = total
         self.dices =  dices
+        print("roll")
+        self.printResults()
     }
     
     init(initialSet: DiceSet, limit: Int) {
@@ -33,7 +35,7 @@ struct DiceSet {
                 let index = i.value - 1
                 total[index] += 1
             } else {
-                let dice = Dice()
+                let dice = Dice(reroll: true)
                 let index = dice.value - 1
                 total[index] += 1
                 dices.append(dice)
@@ -42,6 +44,8 @@ struct DiceSet {
         self.totalResult = total
         self.dices =  dices
         
+        print("re-roll")
+        self.printResults()
     }
     
     init(dices: [Dice]) {
@@ -74,6 +78,22 @@ struct DiceSet {
             ret += ((i / 2) + (i % 2)) * multiplier
         }
         return ret
+    }
+    
+    func printResults() {
+        var retString: String = ""
+        retString += "{ "
+        for i in dices {
+            retString += " \(i.value)"
+            if i.reroll {
+                retString += "! "
+            } else {
+                retString += "? "
+            }
+            
+        }
+        retString += " }"
+        print(retString)
     }
     
 }

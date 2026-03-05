@@ -37,8 +37,16 @@
 				Domain/DiceSet.swift,
 				Domain/Enum/DiceEnum.swift,
 				Domain/Enum/PhasesEnum.swift,
+				Domain/Orders/AddSustainOrder.swift,
+				Domain/Orders/CutLethalsOrder.swift,
+				Domain/Orders/GetCritsOrder.swift,
+				Domain/Orders/GetHitFinalResultsOrder.swift,
+				Domain/Orders/GetHitInitialResultsOrder.swift,
+				Domain/Orders/RerollOrder.swift,
+				Domain/Orders/RollOrder.swift,
 				Domain/Protocols/Order.swift,
 				Domain/RollSet.swift,
+				Domain/Singletons/Calculations.swift,
 			);
 			target = 800976E52F522CD500B3D089 /* BattleDiceTests */;
 		};
@@ -49,8 +57,16 @@
 				Domain/DiceSet.swift,
 				Domain/Enum/DiceEnum.swift,
 				Domain/Enum/PhasesEnum.swift,
+				Domain/Orders/AddSustainOrder.swift,
+				Domain/Orders/CutLethalsOrder.swift,
+				Domain/Orders/GetCritsOrder.swift,
+				Domain/Orders/GetHitFinalResultsOrder.swift,
+				Domain/Orders/GetHitInitialResultsOrder.swift,
+				Domain/Orders/RerollOrder.swift,
+				Domain/Orders/RollOrder.swift,
 				Domain/Protocols/Order.swift,
 				Domain/RollSet.swift,
+				Domain/Singletons/Calculations.swift,
 			);
 			target = 800976EF2F522CD500B3D089 /* BattleDiceUITests */;
 		};
