@@ -12,8 +12,8 @@ class AddSustainOrder: OrderProtocol {
     var priority: Int = 3
     
     var totalSustain: Int = 0
-    init(order: GetCritsOrder) {
-        self.previewsOrders.append(order)
+    init(previewsOrders: [any OrderProtocol]) {
+        self.previewsOrders = previewsOrders
     }
     func execute(set: DiceSet?) -> DiceSet {
         getCrits()

@@ -1,14 +1,15 @@
 //
-//  RerollOrder.swift
+//  RerollWondOrder.swift
 //  BattleDice
 //
 //  Created by Renan Baialuna on 05/03/26.
 //
 
 
-struct RerollOrder: OrderProtocol {
+
+struct RerollWondOrder: OrderProtocol {
     var priority: Int = 1
-    let phase: [PhasesEnum] = [.hit, .wond, .save]
+    let phase: [PhasesEnum] = [.wond]
     var previewsOrders: [OrderProtocol]
     
     let limit: Int

@@ -14,7 +14,7 @@ class RollSet {
     var saveOrders: [OrderProtocol] = []
     
     func setup() {
-        var rollOrder = RollOrder(orders: [], totalDices: 10)
+        var rollOrder = RollHitOrder(orders: [], totalDices: 10)
         hitOrders.append(rollOrder)
         
         

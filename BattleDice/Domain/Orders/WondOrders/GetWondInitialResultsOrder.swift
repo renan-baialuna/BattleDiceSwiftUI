@@ -1,14 +1,14 @@
 //
-//  GetHitInitialResultsOrder.swift
+//  GetWondInitialResultsOrder.swift
 //  BattleDice
 //
 //  Created by Renan Baialuna on 05/03/26.
 //
 
 
-class GetHitInitialResultsOrder: OrderProtocol {
+class GetWondInitialResultsOrder: OrderProtocol {
     var previewsOrders: [any OrderProtocol]
-    var phase: [PhasesEnum] = [.hit]
+    var phase: [PhasesEnum] = [.wond]
     var priority: Int = 4
     var limit: Int = 6
     var initialResults: Int = 0
@@ -32,3 +32,6 @@ class GetHitInitialResultsOrder: OrderProtocol {
         }
     }
 }
+
+
+

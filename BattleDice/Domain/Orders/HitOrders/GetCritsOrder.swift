@@ -14,7 +14,8 @@ class GetCritsOrder: OrderProtocol {
     let limit: Int
     var totalCrits: Int = 0
     
-    init(limit: Int = 6) {
+    init(previewsOrders: [any OrderProtocol], limit: Int = 6) {
+        self.previewsOrders = previewsOrders
         self.limit = Calculations.shared.checkLimits(entry: limit)
     }
     

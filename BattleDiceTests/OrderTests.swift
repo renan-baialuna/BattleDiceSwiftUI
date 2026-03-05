@@ -28,7 +28,7 @@ struct OrderTests {
     @Test func testOrdersGetCrits() async throws {
         let set = RollSet()
         set.diceSet = DiceSet(dices: [Dice(value: 1), Dice(value: 2),Dice(value: 3), Dice(value: 6)])
-        var getCritsOrder = GetCritsOrder()
+        var getCritsOrder = GetCritsOrder(previewsOrders: [])
         set.hitOrders.append(getCritsOrder)
         set.runHitOrders()
         XCTAssertTrue(getCritsOrder.totalCrits == 1)
@@ -38,8 +38,8 @@ struct OrderTests {
     @Test func testOrdersLethal() async throws {
         let set = RollSet()
         set.diceSet = DiceSet(dices: [Dice(value: 1), Dice(value: 2),Dice(value: 3), Dice(value: 6)])
-        var getCritsOrder = GetCritsOrder()
-        var cutLethals = CutLethalsOrder(order: getCritsOrder)
+        var getCritsOrder = GetCritsOrder(previewsOrders: [])
+        var cutLethals = CutLethalsOrder(previewsOrders: [getCritsOrder])
         set.hitOrders.append(getCritsOrder)
         set.hitOrders.append(cutLethals)
         set.runHitOrders()
@@ -50,8 +50,8 @@ struct OrderTests {
     @Test func testOrdersSustain() async throws {
         let set = RollSet()
         set.diceSet = DiceSet(dices: [Dice(value: 1), Dice(value: 2),Dice(value: 3), Dice(value: 6)])
-        var getCritsOrder = GetCritsOrder()
-        var getSustainOrder = AddSustainOrder(order: getCritsOrder)
+        var getCritsOrder = GetCritsOrder(previewsOrders: [])
+        var getSustainOrder = AddSustainOrder(previewsOrders: [getCritsOrder])
         set.hitOrders.append(getCritsOrder)
         set.hitOrders.append(getSustainOrder)
         set.runHitOrders()
@@ -77,7 +77,7 @@ struct OrderTests {
         set.hitOrders.append(initialCalculation)
         set.hitOrders.append(finalResults)
         set.runHitOrders()
-        XCTAssertTrue(initialCalculation.initialResults == 1)
+        XCTAssertTrue(finalResults.finalResults == 1)
         
     }
     
@@ -85,8 +85,8 @@ struct OrderTests {
         let set = RollSet()
         set.diceSet = DiceSet(dices: [Dice(value: 1), Dice(value: 2),Dice(value: 3), Dice(value: 6)])
         var initialCalculation = GetHitInitialResultsOrder(previewsOrders: [],limit: 5)
-        var critsOrder = GetCritsOrder(limit: 5)
-        var sustainOrder = AddSustainOrder(order: critsOrder)
+        var critsOrder = GetCritsOrder(previewsOrders: [], limit: 5)
+        var sustainOrder = AddSustainOrder(previewsOrders: [critsOrder])
         var finalResults = GetHitFinalResultsOrder(previewsOrders: [initialCalculation])
         set.hitOrders.append(critsOrder)
         set.hitOrders.append(sustainOrder)
@@ -100,8 +100,8 @@ struct OrderTests {
         let set = RollSet()
         set.diceSet = DiceSet(dices: [Dice(value: 1), Dice(value: 2),Dice(value: 3), Dice(value: 6)])
         var initialCalculation = GetHitInitialResultsOrder(previewsOrders: [],limit: 5)
-        var critsOrder = GetCritsOrder(limit: 5)
-        var devwondsOrder = CutDevWondsOrder(order: critsOrder)
+        var critsOrder = GetCritsOrder(previewsOrders: [], limit: 5)
+        var devwondsOrder = CutDevWondsOrder(previewsOrders: [critsOrder])
         var finalResults = GetHitFinalResultsOrder(previewsOrders: [initialCalculation])
         set.hitOrders.append(critsOrder)
         set.hitOrders.append(devwondsOrder)
@@ -111,5 +111,24 @@ struct OrderTests {
         XCTAssertTrue(initialCalculation.initialResults == 0)
     }
     
+    @Test func testWondsInitialResult() async throws {
+        let set = RollSet()
+        set.diceSet = DiceSet(dices: [Dice(value: 1), Dice(value: 2),Dice(value: 3), Dice(value: 6)])
+        var initialCalculation = GetWondInitialResultsOrder(previewsOrders: [],limit: 5)
+        set.hitOrders.append(initialCalculation)
+        set.runHitOrders()
+        XCTAssertTrue(initialCalculation.initialResults == 1)
+    }
+    
+    @Test func testFinalResultsWond() async throws {
+        let set = RollSet()
+        set.diceSet = DiceSet(dices: [Dice(value: 1), Dice(value: 2),Dice(value: 3), Dice(value: 6)])
+        var initialCalculation = GetWondInitialResultsOrder(previewsOrders: [],limit: 5)
+        var finalResults = GetWondsFinalResultsOrder(previewsOrders: [initialCalculation])
+        set.hitOrders.append(initialCalculation)
+        set.hitOrders.append(finalResults)
+        set.runHitOrders()
+        XCTAssertTrue(initialCalculation.initialResults == 1)
+    }
     
 }

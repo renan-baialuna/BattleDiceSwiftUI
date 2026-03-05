@@ -1,14 +1,14 @@
 //
-//  GetHitFinalResultsOrder.swift
+//  GetWondsFinalResultsOrder.swift
 //  BattleDice
 //
 //  Created by Renan Baialuna on 05/03/26.
 //
 
 
-class GetHitFinalResultsOrder: OrderProtocol {
+class GetWondsFinalResultsOrder: OrderProtocol {
     var previewsOrders: [any OrderProtocol]
-    var phase: [PhasesEnum] = [.hit]
+    var phase: [PhasesEnum] = [.wond]
     var priority: Int = 4
     var finalResults: Int = 0
     
@@ -17,6 +17,7 @@ class GetHitFinalResultsOrder: OrderProtocol {
     }
     
     func execute(set: DiceSet?) -> DiceSet {
+        calculateResults()
         if let safeSet = set {
             return safeSet
         } else {
@@ -27,15 +28,18 @@ class GetHitFinalResultsOrder: OrderProtocol {
     
     func calculateResults() {
         for order in previewsOrders {
-            if let order = order as? GetHitInitialResultsOrder {
+            if let order = order as? GetWondInitialResultsOrder {
                 finalResults += order.initialResults
             }
-            if let order = order as? AddSustainOrder {
-                finalResults += order.totalSustain
+            if let order = order as? AddLethalsBack {
+                finalResults += order.totalToAdd
             }
-            if let order = order as? CutLethalsOrder {
-                finalResults -= order.totalLethal
+            if let order = order as? CutDevWondsOrder {
+                finalResults -= order.totalDev
             }
         }
     }
 }
+
+
+
