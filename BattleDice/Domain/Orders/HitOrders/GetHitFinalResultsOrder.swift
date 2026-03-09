@@ -7,17 +7,17 @@
 
 
 class GetHitFinalResultsOrder: OrderProtocol {
-    var previewsOrders: [any OrderProtocol]
+    
     var phase: [PhasesEnum] = [.hit]
     var priority: Int = 4
     var finalResults: Int = 0
     
-    init(previewsOrders: [any OrderProtocol]) {
-        self.previewsOrders = previewsOrders
+    init() {
+        
     }
     
-    func execute(set: DiceSet?) -> DiceSet {
-        calculateResults()
+    func execute(set: DiceSet?, previewsOrders: [any OrderProtocol]) -> DiceSet {
+        calculateResults(previewsOrders: previewsOrders)
         if let safeSet = set {
             return safeSet
         } else {
@@ -26,7 +26,8 @@ class GetHitFinalResultsOrder: OrderProtocol {
         }
     }
     
-    func calculateResults() {
+    
+    func calculateResults(previewsOrders: [any OrderProtocol]) {
         for order in previewsOrders {
             if let order = order as? GetHitInitialResultsOrder {
                 finalResults += order.initialResults

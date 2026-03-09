@@ -7,18 +7,22 @@
 
 
 struct RollHitOrder: OrderProtocol {
+
+    
     var priority: Int = 0
-    let phase: [PhasesEnum] = [.hit, .wond, .save]
-    var previewsOrders: [OrderProtocol]
+    let phase: [PhasesEnum] = [.hit]
     
     let totalDices: Int
     
-    init (orders: [OrderProtocol], totalDices: Int) {
-        self.previewsOrders = orders
+    init (totalDices: Int) {
         self.totalDices = totalDices
     }
     
     func execute(set: DiceSet?) -> DiceSet {
+        return DiceSet(totalDices: totalDices)
+    }
+    
+    func execute(set: DiceSet?, previewsOrders: [any OrderProtocol]) -> DiceSet {
         return DiceSet(totalDices: totalDices)
     }
 }

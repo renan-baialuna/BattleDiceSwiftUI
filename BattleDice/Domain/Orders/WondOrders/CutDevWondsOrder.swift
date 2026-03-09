@@ -7,16 +7,15 @@
 
 
 class CutDevWondsOrder: OrderProtocol {
-    var previewsOrders: [any OrderProtocol] = []
     var phase: [PhasesEnum] = [.wond]
     var priority: Int = 3
     
     var totalDev: Int = 0
-    init(previewsOrders: [any OrderProtocol]) {
-        self.previewsOrders = previewsOrders
+    init() {
     }
-    func execute(set: DiceSet?) -> DiceSet {
-        getCrits()
+    
+    func execute(set: DiceSet?, previewsOrders: [any OrderProtocol]) -> DiceSet {
+        getCrits(previewsOrders: previewsOrders)
         if let safeSet = set {
             return safeSet
         } else {
@@ -25,7 +24,7 @@ class CutDevWondsOrder: OrderProtocol {
         }
     }
     
-    func getCrits() {
+    func getCrits(previewsOrders: [any OrderProtocol]) {
         for order in previewsOrders {
             if let order = order as? GetCritsOrder {
                 self.totalDev = order.totalCrits

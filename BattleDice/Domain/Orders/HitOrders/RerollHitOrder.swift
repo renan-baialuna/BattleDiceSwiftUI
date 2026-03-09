@@ -7,18 +7,17 @@
 
 
 struct RerollHitOrder: OrderProtocol {
+
     var priority: Int = 1
-    let phase: [PhasesEnum] = [.hit, .wond, .save]
-    var previewsOrders: [OrderProtocol]
+    let phase: [PhasesEnum] = [.hit]
     
     let limit: Int
     
-    init (orders: [OrderProtocol], limit: Int) {
-        self.previewsOrders = orders
+    init (limit: Int) {
         self.limit = limit
     }
     
-    func execute(set: DiceSet?) -> DiceSet {
+    func execute(set: DiceSet?, previewsOrders: [any OrderProtocol]) -> DiceSet {
         if let safeSet = set {
             return DiceSet(initialSet: safeSet, limit: limit)
         } else {

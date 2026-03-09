@@ -7,19 +7,17 @@
 
 
 class GetCritsOrder: OrderProtocol {
-    var previewsOrders: [any OrderProtocol] = []
     var phase: [PhasesEnum] = [.hit, .wond]
     var priority: Int = 2
     
     let limit: Int
     var totalCrits: Int = 0
     
-    init(previewsOrders: [any OrderProtocol], limit: Int = 6) {
-        self.previewsOrders = previewsOrders
+    init(limit: Int = 6) {
         self.limit = Calculations.shared.checkLimits(entry: limit)
     }
     
-    func execute(set: DiceSet?) -> DiceSet {
+    func execute(set: DiceSet?, previewsOrders: [any OrderProtocol]) -> DiceSet {
         if let safeSet = set {
             for index in safeSet.totalResult.indices {
                 if index >= (limit - 1) {

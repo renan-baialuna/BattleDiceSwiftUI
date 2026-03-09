@@ -22,7 +22,7 @@ class RollSet {
     
     func runHitOrders() {
         for i in hitOrders {
-            self.diceSet = i.execute(set: diceSet)
+            self.diceSet = i.execute(set: diceSet, previewsOrders: self.hitOrders)
             diceSet?.printResults()
         }
         
@@ -40,9 +40,9 @@ class RollSet {
         var orderArray: [OrderProtocol] = []
         var safeLimit = Calculations.shared.checkLimits(entry: limit)
         
-        let rollOrder = RollHitOrder(orders: orderArray, totalDices: dices)
-        let preliminar = GetHitInitialResultsOrder(previewsOrders: orderArray, limit: safeLimit)
-        let finalHitOrder = GetHitFinalResultsOrder(previewsOrders: orderArray)
+        let rollOrder = RollHitOrder(totalDices: dices)
+        let preliminar = GetHitInitialResultsOrder(limit: safeLimit)
+        let finalHitOrder = GetHitFinalResultsOrder()
         
         orderArray.append(rollOrder)
         orderArray.append(preliminar)
@@ -55,9 +55,9 @@ class RollSet {
         var orderArray = self.wondOrders
         var safeLimit = Calculations.shared.checkLimits(entry: limit)
         
-        let rollOrder = RollWondOrder(orders: orderArray, totalDices: dices)
-        let preliminar = GetWondInitialResultsOrder(previewsOrders: orderArray, limit: safeLimit)
-        let finalHitOrder = GetWondsFinalResultsOrder(previewsOrders: orderArray)
+        let rollOrder = RollWondOrder(totalDices: dices)
+        let preliminar = GetWondInitialResultsOrder(limit: safeLimit)
+        let finalHitOrder = GetWondsFinalResultsOrder()
         
         orderArray.append(rollOrder)
         orderArray.append(preliminar)
@@ -68,9 +68,9 @@ class RollSet {
         var orderArray = self.saveOrders
         var safeLimit = Calculations.shared.checkLimits(entry: limit)
         
-        let rollOrder = RollSaveOrder(orders: orderArray, totalDices: dices)
-        let preliminar = GetSaveInitialResultsOrder(previewsOrders: orderArray, limit: safeLimit)
-        let finalHitOrder = GetSaveFinalResultsOrder(previewsOrders: orderArray)
+        let rollOrder = RollSaveOrder(totalDices: dices)
+        let preliminar = GetSaveInitialResultsOrder(limit: safeLimit)
+        let finalHitOrder = GetSaveFinalResultsOrder()
         
         orderArray.append(rollOrder)
         orderArray.append(preliminar)
@@ -99,7 +99,7 @@ public class MechanicSingleton {
     }
     
     func rerrollHits(orderArray: [OrderProtocol], limit: Int) -> [OrderProtocol] {
-        return [RerollHitOrder(orders: orderArray, limit: limit)]
+        return [RerollHitOrder(limit: limit)]
     }
     
 }

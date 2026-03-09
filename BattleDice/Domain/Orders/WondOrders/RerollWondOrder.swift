@@ -10,16 +10,13 @@
 struct RerollWondOrder: OrderProtocol {
     var priority: Int = 1
     let phase: [PhasesEnum] = [.wond]
-    var previewsOrders: [OrderProtocol]
-    
     let limit: Int
     
-    init (orders: [OrderProtocol], limit: Int) {
-        self.previewsOrders = orders
+    init (limit: Int) {
         self.limit = limit
     }
     
-    func execute(set: DiceSet?) -> DiceSet {
+    func execute(set: DiceSet?, previewsOrders: [any OrderProtocol]) -> DiceSet {
         if let safeSet = set {
             return DiceSet(initialSet: safeSet, limit: limit)
         } else {

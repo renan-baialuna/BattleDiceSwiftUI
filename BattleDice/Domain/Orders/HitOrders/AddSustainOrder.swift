@@ -7,16 +7,16 @@
 
 
 class AddSustainOrder: OrderProtocol {
-    var previewsOrders: [any OrderProtocol] = []
     var phase: [PhasesEnum] = [.hit]
     var priority: Int = 3
-    
     var totalSustain: Int = 0
-    init(previewsOrders: [any OrderProtocol]) {
-        self.previewsOrders = previewsOrders
+    
+    init() {
+        
     }
-    func execute(set: DiceSet?) -> DiceSet {
-        getCrits()
+    
+    func execute(set: DiceSet?, previewsOrders: [any OrderProtocol]) -> DiceSet {
+        getCrits(previewsOrders: previewsOrders)
         if let safeSet = set {
             return safeSet
         } else {
@@ -25,7 +25,7 @@ class AddSustainOrder: OrderProtocol {
         }
     }
     
-    func getCrits() {
+    func getCrits(previewsOrders: [any OrderProtocol]) {
         for order in previewsOrders {
             if let order = order as? GetCritsOrder {
                 self.totalSustain = order.totalCrits

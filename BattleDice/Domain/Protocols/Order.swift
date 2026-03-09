@@ -6,8 +6,7 @@
 //
 
 protocol OrderProtocol {
-    var previewsOrders: [OrderProtocol] { get  }
     var phase: [PhasesEnum] { get }
     var priority: Int { get }
-    func execute(set: DiceSet?) -> DiceSet
+    func execute(set: DiceSet?,  previewsOrders: [OrderProtocol]) -> DiceSet
 }

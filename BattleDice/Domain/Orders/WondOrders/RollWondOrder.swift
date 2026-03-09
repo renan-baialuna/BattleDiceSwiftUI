@@ -9,16 +9,13 @@
 struct RollWondOrder: OrderProtocol {
     var priority: Int = 0
     let phase: [PhasesEnum] = [.wond]
-    var previewsOrders: [OrderProtocol]
-    
     let totalDices: Int
     
-    init (orders: [OrderProtocol], totalDices: Int) {
-        self.previewsOrders = orders
+    init (totalDices: Int) {
         self.totalDices = totalDices
     }
     
-    func execute(set: DiceSet?) -> DiceSet {
+    func execute(set: DiceSet?, previewsOrders: [any OrderProtocol]) -> DiceSet {
         return DiceSet(totalDices: totalDices)
     }
 }
