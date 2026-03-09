@@ -12,14 +12,14 @@ struct OrderTests {
 
     @Test func testOrders() async throws {
         let set = RollSet()
-        let order = RollOrder(orders: [], totalDices: 10)
+        let order = RollHitOrder(orders: [], totalDices: 10)
         set.runHitOrders()
     }
 
     @Test func testOrdersReroll() async throws {
         let set = RollSet()
-        let rollOrder = RollOrder(orders: [], totalDices: 10)
-        let rerollOrder = RerollOrder(orders: [], limit: 4)
+        let rollOrder = RollHitOrder(orders: [], totalDices: 10)
+        let rerollOrder = RerollHitOrder(orders: [], limit: 4)
         set.hitOrders.append(rollOrder)
         set.hitOrders.append(rerollOrder)
         set.runHitOrders()

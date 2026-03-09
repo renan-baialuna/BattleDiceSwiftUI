@@ -1,14 +1,14 @@
 //
-//  RollOrder.swift
+//  RollWondOrder.swift
 //  BattleDice
 //
 //  Created by Renan Baialuna on 05/03/26.
 //
 
 
-struct RollHitOrder: OrderProtocol {
+struct RollWondOrder: OrderProtocol {
     var priority: Int = 0
-    let phase: [PhasesEnum] = [.hit, .wond, .save]
+    let phase: [PhasesEnum] = [.wond]
     var previewsOrders: [OrderProtocol]
     
     let totalDices: Int
@@ -22,6 +22,3 @@ struct RollHitOrder: OrderProtocol {
         return DiceSet(totalDices: totalDices)
     }
 }
-
-
-
