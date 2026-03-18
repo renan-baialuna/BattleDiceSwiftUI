@@ -9,20 +9,16 @@ import Foundation
 
 class RollSet {
     var diceSet: DiceSet?
-    var hitOrders: [OrderProtocol] = []
-    var wondOrders: [OrderProtocol] = []
-    var saveOrders: [OrderProtocol] = []
-    
-    
+    var orders: [OrderProtocol] = []
     
     func setup() {
         
         
     }
     
-    func runHitOrders() {
-        for i in hitOrders {
-            self.diceSet = i.execute(set: diceSet, previewsOrders: self.hitOrders)
+    func runOrders() {
+        for i in orders {
+            self.diceSet = i.execute(set: diceSet, previewsOrders: self.orders)
             diceSet?.printResults()
         }
         
@@ -32,30 +28,20 @@ class RollSet {
         setup()
     }
     
-    func setInitialOrders() {
-        
-    }
-    
     func setInitialHitOrders(dices: Int, limit: Int) {
-        var orderArray: [OrderProtocol] = []
-        var safeLimit = Calculations.shared.checkLimits(entry: limit)
+        let initial = MechanicSingleton.shared.setInitialHitOrders(total: dices, limit: limit)
+        let wond = MechanicSingleton.shared.setInitialWondOrders(limit: dices)
         
-        let rollOrder = RollHitOrder(totalDices: dices)
-        let preliminar = GetHitInitialResultsOrder(limit: safeLimit)
-        let finalHitOrder = GetHitFinalResultsOrder()
+        let intitialOrders = MechanicSingleton.shared.OrganizeOrders(orders: [initial, wond])
+        print(intitialOrders)
         
-        orderArray.append(rollOrder)
-        orderArray.append(preliminar)
-        orderArray.append(finalHitOrder)
-        
-        self.hitOrders = orderArray
     }
     
     func setInitialWondOrders(dices: Int, limit: Int) {
-        var orderArray = self.wondOrders
+        var orderArray = self.orders
         var safeLimit = Calculations.shared.checkLimits(entry: limit)
         
-        let rollOrder = RollWondOrder(totalDices: dices)
+        let rollOrder = RollWondOrder()
         let preliminar = GetWondInitialResultsOrder(limit: safeLimit)
         let finalHitOrder = GetWondsFinalResultsOrder()
         
@@ -65,10 +51,10 @@ class RollSet {
     }
     
     func setInitialSaveOrders(dices: Int, limit: Int) {
-        var orderArray = self.saveOrders
+        var orderArray = self.orders
         var safeLimit = Calculations.shared.checkLimits(entry: limit)
         
-        let rollOrder = RollSaveOrder(totalDices: dices)
+        let rollOrder = RollSaveOrder()
         let preliminar = GetSaveInitialResultsOrder(limit: safeLimit)
         let finalHitOrder = GetSaveFinalResultsOrder()
         
@@ -80,7 +66,7 @@ class RollSet {
     
     
     func getResults() -> Int? {
-        for i in hitOrders.reversed() {
+        for i in orders.reversed() {
             if let order = i as? GetHitFinalResultsOrder {
                 return  order.finalResults
             }
@@ -93,22 +79,14 @@ class RollSet {
     
 }
 
-public class MechanicSingleton {
-    static let shared = MechanicSingleton()
-    private init() {
-    }
-    
-    func rerrollHits(orderArray: [OrderProtocol], limit: Int) -> [OrderProtocol] {
-        return [RerollHitOrder(limit: limit)]
-    }
-    
+
+
+
+protocol MechanicConector {
+    var keyWord: Keyword? { get }
+    func generateOrders() -> [OrderProtocol]
 }
 
 
-struct Keyword {
-    let name: String
-    let description: String
-    let phase: [PhasesEnum]
-    let orders: [OrderProtocol]
-}
+
 

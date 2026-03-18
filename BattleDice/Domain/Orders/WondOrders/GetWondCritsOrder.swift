@@ -1,13 +1,14 @@
 //
-//  GetCritsOrder.swift
+//  GetWondCritsOrder.swift
 //  BattleDice
 //
-//  Created by Renan Baialuna on 05/03/26.
+//  Created by Renan Baialuna on 11/03/26.
 //
 
 
-class GetCritsOrder: OrderProtocol {
-    var phase: [PhasesEnum] = [.hit, .wond]
+
+class GetWondCritsOrder: OrderProtocol {
+    var phase: PhasesEnum = .wond
     var priority: Int = 2
     
     let limit: Int

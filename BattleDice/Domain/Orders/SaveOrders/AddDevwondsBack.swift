@@ -1,22 +1,22 @@
 //
-//  GetSaveFinalResultsOrder.swift
+//  AddDevwondsBack.swift
 //  BattleDice
 //
-//  Created by Renan Baialuna on 05/03/26.
+//  Created by Renan Baialuna on 13/03/26.
 //
 
 
-class GetSaveFinalResultsOrder: OrderProtocol {
+class AddDevwondsBack: OrderProtocol {
     var phase: PhasesEnum = .save
     var priority: Int = 4
-    var finalResults: Int = 0
     
+    var totalToAdd: Int = 0
     init() {
         
     }
     
     func execute(set: DiceSet?, previewsOrders: [any OrderProtocol]) -> DiceSet {
-        calculateResults(previewsOrders: previewsOrders)
+        getCrits(previewsOrders: previewsOrders)
         if let safeSet = set {
             return safeSet
         } else {
@@ -25,13 +25,10 @@ class GetSaveFinalResultsOrder: OrderProtocol {
         }
     }
     
-    func calculateResults(previewsOrders: [any OrderProtocol]) {
+    func getCrits(previewsOrders: [any OrderProtocol]) {
         for order in previewsOrders {
-            if let order = order as? GetSaveInitialResultsOrder {
-                finalResults += order.initialResults
-            }
             if let order = order as? CutDevWondsOrder {
-                finalResults += order.totalDev
+                self.totalToAdd = order.totalDev
             }
         }
     }

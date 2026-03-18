@@ -9,7 +9,7 @@
 struct RerollHitOrder: OrderProtocol {
 
     var priority: Int = 1
-    let phase: [PhasesEnum] = [.hit]
+    let phase: PhasesEnum = .hit
     
     let limit: Int
     

@@ -8,8 +8,8 @@
 
 class GetHitFinalResultsOrder: OrderProtocol {
     
-    var phase: [PhasesEnum] = [.hit]
-    var priority: Int = 4
+    var phase: PhasesEnum = .hit
+    var priority: Int = 5
     var finalResults: Int = 0
     
     init() {

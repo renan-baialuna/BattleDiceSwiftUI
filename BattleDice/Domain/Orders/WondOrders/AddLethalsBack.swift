@@ -7,7 +7,7 @@
 
 
 class AddLethalsBack: OrderProtocol {
-    var phase: [PhasesEnum] = [.wond]
+    var phase: PhasesEnum = .wond
     var priority: Int = 4
     
     var totalToAdd: Int = 0
@@ -33,3 +33,5 @@ class AddLethalsBack: OrderProtocol {
         }
     }
 }
+
+

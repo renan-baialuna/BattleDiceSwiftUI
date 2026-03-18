@@ -7,7 +7,7 @@
 
 
 class GetWondInitialResultsOrder: OrderProtocol {
-    var phase: [PhasesEnum] = [.wond]
+    var phase: PhasesEnum = .wond
     var priority: Int = 4
     var limit: Int = 6
     var initialResults: Int = 0

@@ -7,7 +7,7 @@
 
 
 class CutLethalsOrder: OrderProtocol {
-    var phase: [PhasesEnum] = [.hit]
+    var phase: PhasesEnum = .hit
     var priority: Int = 3
     
     var totalLethal: Int = 0
@@ -26,7 +26,7 @@ class CutLethalsOrder: OrderProtocol {
     
     func getCrits(previewsOrders: [any OrderProtocol]) {
         for order in previewsOrders {
-            if let order = order as? GetCritsOrder {
+            if let order = order as? GetHitCritsOrder {
                 self.totalLethal = order.totalCrits
             }
         }

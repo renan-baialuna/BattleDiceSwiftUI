@@ -7,7 +7,7 @@
 
 
 class CutDevWondsOrder: OrderProtocol {
-    var phase: [PhasesEnum] = [.wond]
+    var phase: PhasesEnum = .wond
     var priority: Int = 3
     
     var totalDev: Int = 0
@@ -26,7 +26,7 @@ class CutDevWondsOrder: OrderProtocol {
     
     func getCrits(previewsOrders: [any OrderProtocol]) {
         for order in previewsOrders {
-            if let order = order as? GetCritsOrder {
+            if let order = order as? GetWondCritsOrder {
                 self.totalDev = order.totalCrits
             }
         }

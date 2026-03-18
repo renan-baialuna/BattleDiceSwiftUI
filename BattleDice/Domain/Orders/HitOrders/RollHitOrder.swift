@@ -10,7 +10,7 @@ struct RollHitOrder: OrderProtocol {
 
     
     var priority: Int = 0
-    let phase: [PhasesEnum] = [.hit]
+    let phase: PhasesEnum = .hit
     
     let totalDices: Int
     

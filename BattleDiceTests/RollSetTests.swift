@@ -14,11 +14,12 @@ struct RollSetTests {
 
     @Test func hitOrdersTest() async throws {
         var set = RollSet()
+        
         set.setInitialHitOrders(dices: 10, limit: 3)
         
-        XCTAssertTrue(set.hitOrders.count == 3)
+        XCTAssertTrue(set.orders.count == 4)
         
-        set.runHitOrders()
+        set.runOrders()
         
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.
         

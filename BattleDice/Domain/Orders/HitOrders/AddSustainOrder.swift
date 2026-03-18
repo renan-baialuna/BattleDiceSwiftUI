@@ -7,7 +7,7 @@
 
 
 class AddSustainOrder: OrderProtocol {
-    var phase: [PhasesEnum] = [.hit]
+    var phase: PhasesEnum = .hit
     var priority: Int = 3
     var totalSustain: Int = 0
     
@@ -27,7 +27,7 @@ class AddSustainOrder: OrderProtocol {
     
     func getCrits(previewsOrders: [any OrderProtocol]) {
         for order in previewsOrders {
-            if let order = order as? GetCritsOrder {
+            if let order = order as? GetHitCritsOrder {
                 self.totalSustain = order.totalCrits
             }
         }

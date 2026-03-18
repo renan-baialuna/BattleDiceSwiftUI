@@ -8,14 +8,18 @@
 
 struct RollWondOrder: OrderProtocol {
     var priority: Int = 0
-    let phase: [PhasesEnum] = [.wond]
-    let totalDices: Int
-    
-    init (totalDices: Int) {
-        self.totalDices = totalDices
-    }
+    let phase: PhasesEnum = .wond
     
     func execute(set: DiceSet?, previewsOrders: [any OrderProtocol]) -> DiceSet {
-        return DiceSet(totalDices: totalDices)
+        return DiceSet(totalDices: getCrits(previewsOrders: previewsOrders))
+    }
+    
+    func getCrits(previewsOrders: [any OrderProtocol]) -> Int {
+        for order in previewsOrders {
+            if let order = order as? GetHitFinalResultsOrder {
+                return order.finalResults
+            }
+        }
+        return 0
     }
 }

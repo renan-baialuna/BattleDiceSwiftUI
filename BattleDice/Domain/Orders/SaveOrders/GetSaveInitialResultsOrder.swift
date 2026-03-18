@@ -7,7 +7,7 @@
 
 
 class GetSaveInitialResultsOrder: OrderProtocol {
-    var phase: [PhasesEnum] = [.save]
+    var phase: PhasesEnum = .save
     var priority: Int = 4
     var limit: Int = 6
     var initialResults: Int = 0

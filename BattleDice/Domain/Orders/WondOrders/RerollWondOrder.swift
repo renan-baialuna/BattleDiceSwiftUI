@@ -9,7 +9,7 @@
 
 struct RerollWondOrder: OrderProtocol {
     var priority: Int = 1
-    let phase: [PhasesEnum] = [.wond]
+    let phase: PhasesEnum = .wond
     let limit: Int
     
     init (limit: Int) {
