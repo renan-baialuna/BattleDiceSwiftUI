@@ -11,4 +11,7 @@ extension View {
     func AppFont(_ style: AppFont.Style) -> some View {
         self.font(BattleDice.AppFont.custom(style))
     }
+
+    
 }
+
