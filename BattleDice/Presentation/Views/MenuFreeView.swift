@@ -1,14 +1,14 @@
 //
-//  MenuView.swift
+//  MenuFreeView.swift
 //  BattleDice
 //
-//  Created by Renan Baialuna on 20/03/26.
+//  Created by Renan Baialuna on 02/04/26.
 //
 
 import SwiftUI
 
-struct MenuView: View {
-    @StateObject var viewModel = MenuViewModel()
+struct MenuFreeView: View {
+    @StateObject var viewModel = MenuFreeViewModel()
     
     let onRoute: (AppRoute) -> Void
     
@@ -17,29 +17,20 @@ struct MenuView: View {
             Spacer()
             SpecialButton(
                 activation: {
-                    onRoute(.FreeMenu)
+                    onRoute(.Menu)
                 },
-                title: viewModel.getXpressTitle()
-            )
-            Spacer()
-            SpecialButton(
-                activation: viewModel.moveFreeFlow,
-                title: viewModel.getFreeFlow()
+                title: viewModel.getNumberOfHits()
             )
             Spacer()
             
         }.padding(.horizontal, 20)
         .background(Color.backSec)
-//        .onChange(of: coordinator.path) { newValue in
-//            print("PATH:", newValue)
-//        }
     }
 }
 
 #Preview {
     @StateObject var coordinator = AppCoordinator()
-
-    MenuView(onRoute: { route in
+    MenuFreeView(onRoute: { route in
         print(route)
         coordinator.navigate(to: route)
         

@@ -14,7 +14,7 @@ struct BattleDiceApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppCoordinatorView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

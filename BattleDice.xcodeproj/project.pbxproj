@@ -61,6 +61,7 @@
 				Domain/RollSet.swift,
 				Domain/Singletons/Calculations.swift,
 				Domain/Singletons/MechanicSingleton.swift,
+				Presentation/Views/MenuFreeView.swift,
 			);
 			target = 800976E52F522CD500B3D089 /* BattleDiceTests */;
 		};
@@ -95,6 +96,7 @@
 				Domain/RollSet.swift,
 				Domain/Singletons/Calculations.swift,
 				Domain/Singletons/MechanicSingleton.swift,
+				Presentation/Views/MenuFreeView.swift,
 			);
 			target = 800976EF2F522CD500B3D089 /* BattleDiceUITests */;
 		};
