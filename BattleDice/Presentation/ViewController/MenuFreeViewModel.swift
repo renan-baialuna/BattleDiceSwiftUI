@@ -34,13 +34,26 @@ class MenuFreeViewModel: ObservableObject {
     func onFellNoPainRoll() {
         print("Fell No Pain")
     }
+    
+    public func getNumberHitsText() -> String {
+        return "Number of Hits"
+    }
+    
+    public func getHitsText() -> String {
+        return "Hit Roll"
+    }
+    
+    public func getWondsText() -> String {
+        return "Wond Roll"
+    }
+    
+    public func getSaveText() -> String {
+        return "Save Roll"
+    }
+    
+    public func getFellNoPainText() -> String {
+        return "FnP Roll"
+    }
+    
 
-    
-    public func getNumberOfHits() -> String {
-        return "Express Mode"
-    }
-    
-    public func getFreeFlow() -> String {
-        return "Free Flow"
-    }
 }

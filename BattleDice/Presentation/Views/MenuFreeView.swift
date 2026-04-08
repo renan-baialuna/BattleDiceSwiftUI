@@ -11,16 +11,47 @@ struct MenuFreeView: View {
     @StateObject var viewModel = MenuFreeViewModel()
     
     let onRoute: (AppRoute) -> Void
+    let onPop: () -> Void
     
     var body: some View {
         VStack {
             Spacer()
             SpecialButton(
                 activation: {
-                    onRoute(.Menu)
+//                    onRoute(.Menu)
                 },
-                title: viewModel.getNumberOfHits()
+                title: viewModel.getNumberHitsText()
             )
+            Spacer(minLength: 45)
+            SpecialButton(
+                activation: {
+//                    onRoute(.Menu)
+                },
+                title: viewModel.getHitsText()
+            )
+            Spacer(minLength: 45)
+            SpecialButton(
+                activation: {
+//                    onRoute(.Menu)
+                },
+                title: viewModel.getWondsText()
+            )
+            Spacer(minLength: 45)
+            SpecialButton(
+                activation: {
+//                    onRoute(.Menu)
+                },
+                title: viewModel.getSaveText()
+            )
+            Spacer(minLength: 45)
+            SpecialButton(
+                activation: {
+//                    onRoute(.Menu)
+                },
+                title: viewModel.getFellNoPainText()
+            )
+            
+            
             Spacer()
             
         }.padding(.horizontal, 20)
@@ -34,6 +65,8 @@ struct MenuFreeView: View {
         print(route)
         coordinator.navigate(to: route)
         
+    }, onPop: {
+        coordinator.pop()
     })
         .preferredColorScheme(.dark)
 }

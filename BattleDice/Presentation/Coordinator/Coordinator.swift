@@ -9,27 +9,6 @@ import Foundation
 import Combine
 import SwiftUI
 
-enum AppRoute: Hashable {
-    case Menu
-    case FreeMenu
-}
-
-final class AppCoordinator: ObservableObject {
-    @Published var path = NavigationPath()
-
-    func navigate(to route: AppRoute) {
-        path.append(route)
-    }
-
-    func pop() {
-        path.removeLast()
-    }
-
-    func popToRoot() {
-        path = NavigationPath()
-    }
-}
-
 struct AppCoordinatorView: View {
     @StateObject var coordinator = AppCoordinator()
 
@@ -48,7 +27,19 @@ struct AppCoordinatorView: View {
                 case .FreeMenu:
                     MenuFreeView{ route in
                         coordinator.navigate(to: route)
+                    } onPop: {
+                        coordinator.pop()
                     }
+                case .NumberHits:
+                    NumberOfHitsView{ route in
+                        coordinator.navigate(to: route)
+                    } onPop: {
+                        coordinator.pop()
+                    }
+                    
+                    
+                    
+                    
                 default:
                     EmptyView()
                 }
@@ -56,12 +47,3 @@ struct AppCoordinatorView: View {
         }
     }
 }
-
-class Coordinator: ObservableObject {
-    
-    init() {
-        
-    }
-}
-
-
