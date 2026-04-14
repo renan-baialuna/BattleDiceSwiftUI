@@ -5,9 +5,58 @@
 //  Created by Renan Baialuna on 02/03/26.
 //
 
+struct DiceResult {
+    let totalResult: [Int]
+    
+    init(dices: [Dice]) {
+        var total: [Int] = Array(repeating: 0, count: 6)
+        for dice in dices {
+            let index = dice.value - 1
+            total[index] += 1
+        }
+        self.totalResult = total
+    }
+    
+    func calculateTotalD6() -> Int {
+        var ret: Int = 0
+        for (index, total) in totalResult.enumerated() {
+            let multiplier = index + 1
+            ret += total * multiplier
+        }
+        return ret
+    }
+    
+    func calculateTotalD3() -> Int {
+        var ret: Int = 0
+        for (index, total) in totalResult.enumerated()  {
+            switch index {
+            case 0, 1:
+                ret += total
+            case 2, 3:
+                ret += total * 2
+            default:
+                ret += total * 3
+            }
+        }
+        return ret
+    }
+    
+    func countAbove(limit: Int) -> Int {
+        var ret: Int = 0
+        for (index, total) in totalResult.enumerated() {
+            if index + 1 >= limit {
+                ret += total
+            }
+        }
+        return ret
+    }
+    
+}
+
 struct DiceSet {
     let dices: [Dice]
     let totalResult: [Int]
+    let diceResult: DiceResult
     
     
 //MARK: inits
@@ -20,6 +69,7 @@ struct DiceSet {
             total[index] += 1
             dices.append(dice)
         }
+        self.diceResult = DiceResult(dices: dices)
         self.totalResult = total
         self.dices =  dices
         print("roll")
@@ -45,6 +95,7 @@ struct DiceSet {
         self.dices =  dices
         
         print("re-roll")
+        self.diceResult = DiceResult(dices: dices)
         self.printResults()
     }
     
@@ -58,6 +109,7 @@ struct DiceSet {
         }
         self.totalResult = total
         self.dices =  internalDices
+        self.diceResult = DiceResult(dices: dices)
     }
     
 //MARK: functions

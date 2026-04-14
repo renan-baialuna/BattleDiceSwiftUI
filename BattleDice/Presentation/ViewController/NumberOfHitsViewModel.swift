@@ -16,7 +16,7 @@ class NumberOfHitsViewModel: ObservableObject {
     public func generateDices(staticNumber: Int, diceNumber: Int, isD3: Bool) -> Int {
         var ret: Int = staticNumber
         let diceSet = DiceSet(totalDices: diceNumber)
-        ret += isD3 ? diceSet.calculateTotalD3() : diceSet.calculateTotalD6()
+        ret += isD3 ? diceSet.diceResult.calculateTotalD3() : diceSet.diceResult.calculateTotalD6()
         return ret
     }
     

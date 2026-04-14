@@ -18,7 +18,7 @@ struct MenuFreeView: View {
             Spacer()
             SpecialButton(
                 activation: {
-//                    onRoute(.Menu)
+                    onRoute(.NumberHits)
                 },
                 title: viewModel.getNumberHitsText()
             )

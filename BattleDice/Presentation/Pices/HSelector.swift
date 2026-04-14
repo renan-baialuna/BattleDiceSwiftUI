@@ -27,6 +27,7 @@ struct HSelector: View {
                     .font(BattleDice.AppFont.custom(.title))
                     .frame(width: 120)
                     .multilineTextAlignment(.center)
+                    .lineSpacing(1)
                 TextField(subText, text: $numberHits)
                     .padding(.vertical, 11)
                     .background(
@@ -37,6 +38,7 @@ struct HSelector: View {
                     .foregroundStyle(.detailSec)
                     .frame(width: 80)
                     .multilineTextAlignment(.center)
+                    .keyboardType(.numberPad)
                 Spacer()
             }
         }

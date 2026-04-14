@@ -10,7 +10,7 @@ import SwiftUI
 struct NumberOfHitsView: View {
     @StateObject var viewModel = NumberOfHitsViewModel()
     @State var d3Selected: Bool = false
-    @State var numberHits: String = "0"
+    @State var numberStatic: String = "0"
     @State var numberDice: String = "0"
     
     let onRoute: (AppRoute) -> Void
@@ -21,7 +21,7 @@ struct NumberOfHitsView: View {
             Text(viewModel.getTitle())
                 .font(BattleDice.AppFont.custom(.body))
             Spacer()
-            HSelector(numberHits: $numberHits, title: viewModel.getStaticNumber())
+            HSelector(numberHits: $numberStatic, title: viewModel.getStaticNumber())
             HSelector(numberHits: $numberDice, title: viewModel.getDiceNumber())
             
             HStack{
@@ -32,18 +32,25 @@ struct NumberOfHitsView: View {
                     d3Selected = false
                 }, title: viewModel.getD6Title(), primary: !d3Selected)
             }
+            .padding(20)
             Text(
                 viewModel.getResume(
-                    staticNumber: numberHits,
+                    staticNumber: numberStatic,
                     diceNumber: numberDice,
                     isD3: d3Selected
                 )
             )
+            .font(BattleDice.AppFont.custom(.body))
             Spacer()
             SpecialButton(activation: {
-                print(viewModel.generateDices(staticNumber: 0, diceNumber: 1, isD3: self.d3Selected))
+                print(viewModel.generateDices(
+                    staticNumber: Int(numberStatic) ?? 0,
+                    diceNumber: Int(numberDice) ?? 0,
+                    isD3: self.d3Selected)
+                )
             }, title: viewModel.getContinue())
         }
+        .lineSpacing(40)
         .padding(20)
         .background(Color.backSec)
     }
