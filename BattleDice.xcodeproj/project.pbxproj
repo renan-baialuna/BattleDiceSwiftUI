@@ -62,6 +62,8 @@
 				Domain/Singletons/Calculations.swift,
 				Domain/Singletons/MechanicSingleton.swift,
 				Presentation/Pices/HSelector.swift,
+				Presentation/Pices/SelectionButton.swift,
+				Presentation/Pices/SpecialButton.swift,
 				Presentation/Views/MenuFreeView.swift,
 				Presentation/Views/NumberOfHitsView.swift,
 			);
@@ -99,6 +101,8 @@
 				Domain/Singletons/Calculations.swift,
 				Domain/Singletons/MechanicSingleton.swift,
 				Presentation/Pices/HSelector.swift,
+				Presentation/Pices/SelectionButton.swift,
+				Presentation/Pices/SpecialButton.swift,
 				Presentation/Views/MenuFreeView.swift,
 				Presentation/Views/NumberOfHitsView.swift,
 			);

@@ -13,7 +13,7 @@ public enum AppFont {
         case .title:
             return .title
         case .body:
-            return .custom("YourFont-Regular", size: 16)
+            return .largeTitle
         case .caption:
             return .custom("YourFont-Light", size: 12)
         }
