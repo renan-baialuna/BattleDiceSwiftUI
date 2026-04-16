@@ -64,6 +64,7 @@
 				Presentation/Pices/HSelector.swift,
 				Presentation/Pices/SelectionButton.swift,
 				Presentation/Pices/SpecialButton.swift,
+				Presentation/ViewController/RollHitsViewModel.swift,
 				Presentation/Views/MenuFreeView.swift,
 				Presentation/Views/NumberOfHitsView.swift,
 			);
@@ -103,6 +104,7 @@
 				Presentation/Pices/HSelector.swift,
 				Presentation/Pices/SelectionButton.swift,
 				Presentation/Pices/SpecialButton.swift,
+				Presentation/ViewController/RollHitsViewModel.swift,
 				Presentation/Views/MenuFreeView.swift,
 				Presentation/Views/NumberOfHitsView.swift,
 			);
