@@ -10,8 +10,7 @@ import SwiftUI
 struct RollHitsView: View {
     @StateObject var viewModel = RollHitsViewModel()
     @State var numberHits: String = "0"
-    @State private var selectionValue: Double = 6
-    
+    @State var selectionValue: Double = 6
     
     let onRoute: (AppRoute) -> Void
     let onPop: () -> Void
@@ -21,28 +20,39 @@ struct RollHitsView: View {
         let size: CGFloat = 55
         
         VStack {
-            Text("Hit Roll")
+            Text(viewModel.getTitle())
                 .font(BattleDice.AppFont.custom(.title))
             Spacer()
-            HSelector(numberHits: $numberHits, title: "Hit Rolls")
+            HSelector(
+                numberHits: $numberHits,
+                title: viewModel.getTitle()
+            )
             Spacer()
             DiceHStack()
-            DiceSplider(selectionValue)
+            DiceSplider(selectionValue: $selectionValue)
                 
             
             Rectangle()
                 .fill(.backSec)
-                .frame(height: 40)
+                .frame(height: 5)
+            Text(
+                viewModel.getHitResume(
+                    numberDice: numberHits,
+                    diceLimit: String(Int(selectionValue))
+                )
+            )
+                .font(BattleDice.AppFont.custom(.title))
+            Rectangle()
+                .fill(.backSec)
+                .frame(height: 5)
 
             SpecialButton(activation: {
-                print(numberHits)
-            }, title: "continue")
+                print(viewModel.calculateDices(numberDice: numberHits, diceLimit: String(Int(selectionValue))))
+            }, title: viewModel.getButtonRoll())
         }
         .lineSpacing(40)
-        .padding(20)
+        .padding(40)
         .background(Color.backSec)
-        
-        
     }
 }
 

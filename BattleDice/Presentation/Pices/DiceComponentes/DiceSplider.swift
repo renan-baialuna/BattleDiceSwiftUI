@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct DiceSplider: View {
-    @State private var selectionValue: Double = 6
+    @Binding var selectionValue: Double
     
-    init(_ selectionValue:  Double) {
-        self.selectionValue = selectionValue
-    }
+//    init(_ selectionValue:  Double) {
+//        self.selectionValue = selectionValue
+//    }
     
     var body: some View {
         Slider(value: $selectionValue,

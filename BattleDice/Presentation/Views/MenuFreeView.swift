@@ -25,7 +25,7 @@ struct MenuFreeView: View {
             Spacer(minLength: 45)
             SpecialButton(
                 activation: {
-//                    onRoute(.Menu)
+                    onRoute(.HitRoll)
                 },
                 title: viewModel.getHitsText()
             )
