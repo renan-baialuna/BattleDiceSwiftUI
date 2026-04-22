@@ -59,15 +59,17 @@ struct DiceSet {
     let diceResult: DiceResult
     
     
-//MARK: inits
+//MARK: initsx
     init(totalDices: Int) {
         var total: [Int] = Array(repeating: 0, count: 6)
         var dices: [Dice] = []
-        for i in 1...totalDices {
-            let dice = Dice()
-            let index = dice.value - 1
-            total[index] += 1
-            dices.append(dice)
+        if totalDices > 0 {
+            for i in 1...totalDices {
+                let dice = Dice()
+                let index = dice.value - 1
+                total[index] += 1
+                dices.append(dice)
+            }
         }
         self.diceResult = DiceResult(dices: dices)
         self.totalResult = total

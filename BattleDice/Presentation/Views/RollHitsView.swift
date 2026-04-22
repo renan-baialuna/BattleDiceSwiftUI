@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RollHitsView: View {
-    @StateObject var viewModel = RollHitsViewModel()
+    @StateObject var viewModel: RollHitsViewModel
     @State var numberHits: String = "0"
     @State var selectionValue: Double = 6
     
@@ -30,7 +30,6 @@ struct RollHitsView: View {
             Spacer()
             DiceHStack()
             DiceSplider(selectionValue: $selectionValue)
-                
             
             Rectangle()
                 .fill(.backSec)
@@ -51,17 +50,14 @@ struct RollHitsView: View {
             }, title: viewModel.getButtonRoll())
         }
         .lineSpacing(40)
-        .padding(40)
+        .padding(20)
         .background(Color.backSec)
     }
 }
 
-
-
-
 #Preview {
     @Previewable @StateObject var coordinator = AppCoordinator()
-    RollHitsView(onRoute: { route in
+    RollHitsView(viewModel: RollHitsViewModel(), onRoute: { route in
         print(route)
         coordinator.navigate(to: route)
         

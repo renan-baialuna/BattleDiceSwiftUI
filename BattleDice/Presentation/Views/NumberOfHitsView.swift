@@ -43,11 +43,12 @@ struct NumberOfHitsView: View {
             .font(BattleDice.AppFont.custom(.body))
             Spacer()
             SpecialButton(activation: {
-                print(viewModel.generateDices(
+                let value = viewModel.generateDices(
                     staticNumber: Int(numberStatic) ?? 0,
                     diceNumber: Int(numberDice) ?? 0,
                     isD3: self.d3Selected)
-                )
+                
+                onRoute(.HitRollWithValues(value: value))
             }, title: viewModel.getContinue())
         }
         .lineSpacing(40)

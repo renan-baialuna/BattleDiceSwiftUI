@@ -38,7 +38,20 @@ struct AppCoordinatorView: View {
                     }
                     
                 case .HitRoll:
-                    RollHitsView{route in
+                    RollHitsView(
+                        viewModel: RollHitsViewModel())
+                    { route in
+                        coordinator.navigate(to: route)
+                    } onPop: {
+                        coordinator.pop()
+                    }
+                
+                case .HitRollWithValues(let value):
+                    RollHitsView(
+                        viewModel: RollHitsViewModel(),
+                        numberHits: String(value)
+                    )
+                    { route in
                         coordinator.navigate(to: route)
                     } onPop: {
                         coordinator.pop()
