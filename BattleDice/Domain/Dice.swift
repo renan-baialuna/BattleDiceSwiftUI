@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Dice {
+struct Dice: Hashable {
     let value: Int
     let reroll: Bool
     

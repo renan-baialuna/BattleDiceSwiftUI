@@ -13,6 +13,7 @@ enum AppRoute: Hashable {
     case NumberHits
     case HitRoll
     case HitRollWithValues(value: Int)
+    case HitResult(diceSet: DiceSet, limit: Int)
     case WondRoll
     case SaveRoll
     case FellNoPainRoll

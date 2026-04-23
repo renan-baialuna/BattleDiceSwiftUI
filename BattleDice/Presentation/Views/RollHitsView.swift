@@ -46,7 +46,10 @@ struct RollHitsView: View {
                 .frame(height: 5)
 
             SpecialButton(activation: {
-                print(viewModel.calculateDices(numberDice: numberHits, diceLimit: String(Int(selectionValue))))
+                let diceSet = viewModel.calculateDices(numberDice: numberHits, diceLimit: String(Int(selectionValue)))
+                if let diceSet = diceSet {
+                    onRoute(.HitResult(diceSet: diceSet, limit: Int(self.selectionValue)))
+                }
             }, title: viewModel.getButtonRoll())
         }
         .lineSpacing(40)

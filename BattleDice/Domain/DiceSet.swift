@@ -5,7 +5,7 @@
 //  Created by Renan Baialuna on 02/03/26.
 //
 
-struct DiceResult {
+struct DiceResult: Hashable {
     let totalResult: [Int]
     
     init(dices: [Dice]) {
@@ -53,10 +53,15 @@ struct DiceResult {
     
 }
 
-struct DiceSet {
+struct DiceSet: Hashable {
+    
     let dices: [Dice]
     let totalResult: [Int]
     let diceResult: DiceResult
+    
+    static func == (lhs: DiceSet, rhs: DiceSet) -> Bool {
+        lhs.diceResult.totalResult == rhs.diceResult.totalResult
+    }
     
     
 //MARK: initsx
