@@ -9,16 +9,21 @@ import SwiftUI
 struct Dice2Structure: View {
     let size: CGFloat = 8
     
+    let type: DiceType
+    init(type: DiceType = .select) {
+        self.type = type
+    }
+    
     var body: some View {
         HStack{
             VStack {
                 Spacer()
-                DiceCircle()
+                DiceCircle(type: type)
                     .offset(x:size, y:-size)
             }
             Spacer()
             VStack {
-                DiceCircle()
+                DiceCircle(type: type)
                     .offset(x:-size, y:size)
                 Spacer()
             }

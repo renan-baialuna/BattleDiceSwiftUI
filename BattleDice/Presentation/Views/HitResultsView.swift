@@ -18,30 +18,38 @@ struct HitResultsView: View {
         
         
         VStack {
-            Text("Title")
+            Text(viewModel.getTitle())
             
             DiceResultShower(
                 results: viewModel.diceSet.diceResult,
                 limit: viewModel.limit
             )
             .padding(20)
-            
-//            DiceStructure(value: 1)
-                
-                
-                
-            
+            DiceGridShower(
+                dices: viewModel.diceSet.dices
+            )
             Spacer()
-            SpecialButton(activation: {
-                print("foi")
-            }, title: "continue")
+            VStack {
+                SpecialButton(activation: {
+                    print("sec")
+                },
+                      title: viewModel.getRerollButton(),
+                      isSeccond: true
+                )
+                
+                SpecialButton(activation: {
+                    print("foi")
+                },
+                      title: viewModel.getContinueButton()
+                )
+            }
             .padding(20)
+            
         }
         .background(Color.backSec)
+        .contentMargins(10)
     }
 }
-
-
 
 #Preview {
     @Previewable @StateObject var coordinator = AppCoordinator()

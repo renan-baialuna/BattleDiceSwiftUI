@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Dice: Hashable {
+struct Dice: Hashable, Identifiable {
+    var id = UUID()
+    
     let value: Int
     let reroll: Bool
     

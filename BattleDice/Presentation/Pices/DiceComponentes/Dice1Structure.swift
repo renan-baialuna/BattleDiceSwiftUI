@@ -8,15 +8,26 @@ import SwiftUI
 
 struct Dice1Structure: View {
     
+    let type: DiceType
+    init(type: DiceType = .select) {
+        self.type = type
+    }
+    
     var body: some View {
         HStack{
             Spacer()
             VStack {
                 Spacer()
-                DiceCircle()
+                DiceCircle(type: type)
                 Spacer()
             }
             Spacer()
         }
     }
 }
+
+#Preview {
+    Dice1Structure()
+    .preferredColorScheme(.dark)
+}
+
