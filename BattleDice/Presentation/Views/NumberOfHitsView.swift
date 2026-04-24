@@ -19,7 +19,7 @@ struct NumberOfHitsView: View {
     var body: some View {
         VStack {
             Text(viewModel.getTitle())
-                .font(BattleDice.AppFont.custom(.body))
+                .font(getFont(.title))
             Spacer()
             HSelector(numberHits: $numberStatic, title: viewModel.getStaticNumber())
             HSelector(numberHits: $numberDice, title: viewModel.getDiceNumber())
@@ -40,7 +40,7 @@ struct NumberOfHitsView: View {
                     isD3: d3Selected
                 )
             )
-            .font(BattleDice.AppFont.custom(.body))
+            .font(getFont(.title))
             Spacer()
             SpecialButton(activation: {
                 let value = viewModel.generateDices(

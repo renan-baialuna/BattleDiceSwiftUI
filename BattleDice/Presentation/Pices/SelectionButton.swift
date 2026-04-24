@@ -18,7 +18,7 @@ struct SelectionButton: View {
             activation()
         }) {
             Text(title)
-                .font(BattleDice.AppFont.custom(.title))
+                .font(getFont(.subTitle))
                 .foregroundStyle(primary ? .detailMain : .detailSec)
                 .frame(width: 112, height: 80)
                 .background(
@@ -27,4 +27,14 @@ struct SelectionButton: View {
                 )
         }
     }
+}
+
+#Preview {
+    SelectionButton(activation: {
+        print("test")
+    }, title: "test", primary: true)
+    SelectionButton(activation: {
+        print("test")
+    }, title: "test", primary: false)
+    .preferredColorScheme(.dark)
 }

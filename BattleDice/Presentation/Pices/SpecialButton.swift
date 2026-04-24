@@ -30,7 +30,7 @@ struct SpecialButton: View {
             Text(title) // Customize this Text view
                 .padding()
                 .foregroundColor(.white)
-                .font(BattleDice.AppFont.custom(.title))
+                .font(getFont(.subTitle))
                 
         }
         .frame(maxWidth: .infinity,minHeight: height)

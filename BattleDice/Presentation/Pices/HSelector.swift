@@ -24,7 +24,7 @@ struct HSelector: View {
             HStack {
                 Spacer()
                 Text(title)
-                    .font(BattleDice.AppFont.custom(.title))
+                    .font(getFont(.subTitle))
                     .frame(width: 120)
                     .multilineTextAlignment(.center)
                     .lineSpacing(1)
@@ -34,7 +34,7 @@ struct HSelector: View {
                         Color.detailMain,
                         in: RoundedRectangle(cornerRadius: 8)
                     )
-                    .font(BattleDice.AppFont.custom(.title))
+                    .font(getFont(.subTitle))
                     .foregroundStyle(.detailSec)
                     .frame(width: 80)
                     .multilineTextAlignment(.center)
@@ -43,4 +43,11 @@ struct HSelector: View {
             }
         }
     }
+}
+
+#Preview {
+    @State var numberStatic: String = "0"
+    
+    HSelector(numberHits: $numberStatic, title: "test", subText: "teste 2")
+        .preferredColorScheme(.dark)
 }

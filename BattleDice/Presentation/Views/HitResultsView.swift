@@ -19,7 +19,7 @@ struct HitResultsView: View {
         
         VStack {
             Text(viewModel.getTitle())
-            
+                .font(getFont(.title))
             DiceResultShower(
                 results: viewModel.diceSet.diceResult,
                 limit: viewModel.limit
@@ -31,7 +31,10 @@ struct HitResultsView: View {
             Spacer()
             VStack {
                 SpecialButton(activation: {
-                    print("sec")
+                    onRoute(.HitsRerolls(
+                        diceSet: viewModel.diceSet,
+                        limit: viewModel.limit)
+                    )
                 },
                       title: viewModel.getRerollButton(),
                       isSeccond: true

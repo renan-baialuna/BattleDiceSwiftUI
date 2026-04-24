@@ -10,10 +10,6 @@ import SwiftUI
 struct DiceSplider: View {
     @Binding var selectionValue: Double
     
-//    init(_ selectionValue:  Double) {
-//        self.selectionValue = selectionValue
-//    }
-    
     var body: some View {
         Slider(value: $selectionValue,
                in: 1...6,
@@ -33,4 +29,12 @@ struct DiceSplider: View {
             UISlider.appearance().thumbTintColor = .detailMain
         }
     }
+}
+
+
+#Preview {
+    @State var selectionValue: Double = 6
+    
+    DiceSplider(selectionValue: $selectionValue)
+        .preferredColorScheme(.dark)
 }

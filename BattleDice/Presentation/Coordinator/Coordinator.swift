@@ -59,13 +59,20 @@ struct AppCoordinatorView: View {
                     
                 case .HitResult(let diceSet, let limit):
                     let viewModel = HitResultsViewModel(diceSet: diceSet, limit: limit)
-                    HitResultsView(
-                        viewModel: viewModel) { route in
+                    HitResultsView(viewModel: viewModel) { route in
                             coordinator.navigate(to: route)
                         } onPop: {
                             coordinator.pop()
                         }
 
+                case .HitsRerolls(let diceSet, let limit):
+                    let viewModel = HitsRerollsSelectorViewModel(diceSet: diceSet, limit: limit)
+                    HitsRerollsSelectorView(
+                        viewModel: viewModel) { route in
+                            coordinator.navigate(to: route)
+                        } onPop: {
+                            coordinator.pop()
+                        }
                     
                     
                     

@@ -21,7 +21,7 @@ struct RollHitsView: View {
         
         VStack {
             Text(viewModel.getTitle())
-                .font(BattleDice.AppFont.custom(.title))
+                .font(getFont(.title))
             Spacer()
             HSelector(
                 numberHits: $numberHits,
@@ -40,7 +40,7 @@ struct RollHitsView: View {
                     diceLimit: String(Int(selectionValue))
                 )
             )
-                .font(BattleDice.AppFont.custom(.title))
+            .font(getFont(.subTitle))
             Rectangle()
                 .fill(.backSec)
                 .frame(height: 5)

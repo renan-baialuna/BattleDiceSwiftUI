@@ -19,7 +19,15 @@ struct ValueIndicator: View {
             .fill(.backMain)
             Text(entry)
                 .foregroundStyle(isSpecial ? .detailSec : .detailMain)
-                .font(BattleDice.AppFont.custom(.title))
+                .font(getFont(.subTitle))
         }
     }
+}
+
+#Preview {
+    @StateObject var coordinator = AppCoordinator()
+    ValueIndicator(isSpecial: false, entry: "test")
+    ValueIndicator(isSpecial: true, entry: "test")
+    .preferredColorScheme(.dark)
+    
 }

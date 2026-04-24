@@ -51,6 +51,16 @@ struct DiceResult: Hashable {
         return ret
     }
     
+    func countBellow(limit: Int) -> Int {
+        var ret: Int = 0
+        for (index, total) in totalResult.enumerated() {
+            if index + 1 <= limit {
+                ret += total
+            }
+        }
+        return ret
+    }
+    
 }
 
 struct DiceSet: Hashable {

@@ -14,6 +14,7 @@ enum AppRoute: Hashable {
     case HitRoll
     case HitRollWithValues(value: Int)
     case HitResult(diceSet: DiceSet, limit: Int)
+    case HitsRerolls(diceSet: DiceSet, limit: Int)
     case WondRoll
     case SaveRoll
     case FellNoPainRoll
