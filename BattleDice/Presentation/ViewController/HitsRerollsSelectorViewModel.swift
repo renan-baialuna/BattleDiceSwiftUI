@@ -34,4 +34,16 @@ class HitsRerollsSelectorViewModel: ObservableObject {
         return DiceSet(initialSet: diceSet, limit: newLimit)
     }
     
+    func rerollsSubtitle() -> String {
+        return String(localized: .LocalizableStrings.rerollsTitle)
+    }
+    
+    func getRerollsTitle() -> String {
+        return String(localized: .LocalizableStrings.rerollHitsTitle)
+    }
+    
+    func getRangeDescription(limit: Int) -> String {
+        return  String(localized: .LocalizableStrings.limitFromOne(String(limit)))
+    }
+    
 }

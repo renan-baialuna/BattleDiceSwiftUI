@@ -16,7 +16,6 @@ struct HitResultsView: View {
     
     var body: some View {
         
-        
         VStack {
             Text(viewModel.getTitle())
                 .font(getFont(.title))

@@ -45,6 +45,17 @@
         }
       }
     },
+    "limitFromOne" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 to %1$@"
+          }
+        }
+      }
+    },
     "numberHitsResume" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -56,6 +67,17 @@
         }
       }
     },
+    "rerollHitsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Re-Roll Hits"
+          }
+        }
+      }
+    },
     "rerolls" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -63,6 +85,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Re-Rolls"
+          }
+        }
+      }
+    },
+    "rerollsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rerolls:"
           }
         }
       }

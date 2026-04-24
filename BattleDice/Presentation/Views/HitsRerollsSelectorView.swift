@@ -17,9 +17,9 @@ struct HitsRerollsSelectorView: View {
     
     var body: some View {
         VStack {
-            Text("Re-Roll Hits")
+            Text(viewModel.getRerollsTitle())
                 .font(getFont(.title))
-            Text("1 to \(Int(selectionValue))")
+            Text(viewModel.getRangeDescription(limit: Int(selectionValue)))
                 .font(getFont(.subTitle))
             DiceSplider(selectionValue: $selectionValue)
             DiceHStack()
@@ -28,30 +28,31 @@ struct HitsRerollsSelectorView: View {
                 .frame(height: 5)
             Spacer()
             
-            HStack{
-                Text("Rerolls:")
-                    .font(getFont(.subTitle))
-                ZStack{
-                    Rectangle()
-                        .fill(.detailSec)
-                        .cornerRadius(5)
-                        .frame(width: 80, height: 40)
-                    Text(viewModel.getTotalRerolls(limit: Int(selectionValue)))
-                        .font(getFont(.subTitle))
-                        .foregroundStyle(.detailMain)
-                }
-                
-            }
+            HShower(
+                title: viewModel.rerollsSubtitle(),
+                value: viewModel.getTotalRerolls(
+                    limit: Int(selectionValue)
+                )
+            )
+            
             Rectangle()
                 .fill(.backSec)
                 .frame(height: 10)
             SpecialButton(activation: {
-                viewModel.reroll(newLimit: Int(selectionValue)).printResults()
+                onRoute(
+                    .HitResult(
+                        diceSet: viewModel.reroll(newLimit: Int(selectionValue)),
+                        limit: viewModel.limit
+                    )
+                )
+                
             }, title: viewModel.getContinueButton())
         }.padding(20)
         .background(Color.backSec)
     }
 }
+
+
 
 #Preview {
     @Previewable @StateObject var coordinator = AppCoordinator()
