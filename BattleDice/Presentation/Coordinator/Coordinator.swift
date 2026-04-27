@@ -36,65 +36,6 @@ struct AppCoordinatorView: View {
                     } onPop: {
                         coordinator.pop()
                     }
-                    
-                case .HitRoll:
-                    RollSelectorView(
-                        viewModel: RollSelectorViewModel(state: .hit))
-                    { route in
-                        coordinator.navigate(to: route)
-                    } onPop: {
-                        coordinator.pop()
-                    }
-                
-                case .HitRollWithValues(let value):
-                    RollSelectorView(
-                        viewModel: RollSelectorViewModel(state: .hit),
-                        numberHits: String(value)
-                    )
-                    { route in
-                        coordinator.navigate(to: route)
-                    } onPop: {
-                        coordinator.pop()
-                    }
-                    
-                case .HitResult(let diceSet, let limit):
-                    let viewModel = RollResultViewModel(state: .hit, diceSet: diceSet, limit: limit)
-                    RollResultView(viewModel: viewModel) { route in
-                            coordinator.navigate(to: route)
-                        } onPop: {
-                            coordinator.pop()
-                        }
-
-                case .HitsRerolls(let diceSet, let limit):
-                    let viewModel = RerollsSelectorViewModel(state: .hit, diceSet: diceSet, limit: limit)
-                    RerollsSelectorView(
-                        viewModel: viewModel) { route in
-                            coordinator.navigate(to: route)
-                        } onPop: {
-                            coordinator.pop()
-                        }
-                    
-                case .WondRollWithValues(let value):
-                    RollSelectorView(
-                        viewModel: RollSelectorViewModel(state: .wond),
-                        numberHits: String(value)
-                    )
-                    { route in
-                        coordinator.navigate(to: route)
-                    } onPop: {
-                        coordinator.pop()
-                    }
-                    
-                case .SaveRollWithValues(let value):
-                    RollSelectorView(
-                        viewModel: RollSelectorViewModel(state: .save),
-                        numberHits: String(value)
-                    )
-                    { route in
-                        coordinator.navigate(to: route)
-                    } onPop: {
-                        coordinator.pop()
-                    }
                 
                 case .RollSelectionWithValue(let state, let value):
                     RollSelectorView(
@@ -110,6 +51,14 @@ struct AppCoordinatorView: View {
                 case .RollResult(let state, let diceSet, let limit):
                     let viewModel = RollResultViewModel(state: state, diceSet: diceSet, limit: limit)
                     RollResultView(viewModel: viewModel) { route in
+                            coordinator.navigate(to: route)
+                        } onPop: {
+                            coordinator.pop()
+                        }
+                    
+                case .ReRoll(let state, let diceSet, let limit):
+                    let viewModel = RerollsSelectorViewModel(state: state, diceSet: diceSet, limit: limit)
+                    RerollsSelectorView(viewModel: viewModel) { route in
                             coordinator.navigate(to: route)
                         } onPop: {
                             coordinator.pop()

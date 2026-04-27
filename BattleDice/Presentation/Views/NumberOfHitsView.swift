@@ -48,7 +48,7 @@ struct NumberOfHitsView: View {
                     diceNumber: Int(numberDice) ?? 0,
                     isD3: self.d3Selected)
                 
-                onRoute(.HitRollWithValues(value: value))
+                onRoute(.RollSelectionWithValue(state: .hit, value: value))
             }, title: viewModel.getContinue())
         }
         .lineSpacing(40)

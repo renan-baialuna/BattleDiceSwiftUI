@@ -25,21 +25,30 @@ struct MenuFreeView: View {
             Spacer(minLength: 45)
             SpecialButton(
                 activation: {
-                    onRoute(.HitRollWithValues(value: 10))
+                    onRoute(.RollSelectionWithValue(
+                        state: .hit,
+                        value: 10)
+                    )
                 },
                 title: viewModel.getHitsText()
             )
             Spacer(minLength: 45)
             SpecialButton(
                 activation: {
-//                    onRoute(.Menu)
+                    onRoute(.RollSelectionWithValue(
+                        state: .wond,
+                        value: 10)
+                    )
                 },
                 title: viewModel.getWondsText()
             )
             Spacer(minLength: 45)
             SpecialButton(
                 activation: {
-//                    onRoute(.Menu)
+                    onRoute(.RollSelectionWithValue(
+                        state: .save,
+                        value: 10)
+                    )
                 },
                 title: viewModel.getSaveText()
             )

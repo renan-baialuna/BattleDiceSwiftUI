@@ -40,10 +40,7 @@ struct RerollsSelectorView: View {
                 .frame(height: 10)
             SpecialButton(activation: {
                 onRoute(
-                    .HitResult(
-                        diceSet: viewModel.reroll(newLimit: Int(selectionValue)),
-                        limit: viewModel.limit
-                    )
+                    .RollResult(state: viewModel.state, diceSet: viewModel.reroll(newLimit: Int(selectionValue)), limit: viewModel.limit)
                 )
                 
             }, title: viewModel.getContinueButton())

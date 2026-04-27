@@ -30,7 +30,7 @@ struct RollResultView: View {
             Spacer()
             VStack {
                 SpecialButton(activation: {
-                    onRoute(.HitsRerolls(
+                    onRoute(.ReRoll(state: viewModel.state,
                         diceSet: viewModel.diceSet,
                         limit: viewModel.limit)
                     )
