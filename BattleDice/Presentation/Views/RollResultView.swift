@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct HitResultsView: View {
+struct RollResultView: View {
     
-    @StateObject var viewModel: HitResultsViewModel
+    @StateObject var viewModel: RollResultViewModel
     
     let onRoute: (AppRoute) -> Void
     let onPop: () -> Void
@@ -40,7 +40,7 @@ struct HitResultsView: View {
                 )
                 
                 SpecialButton(activation: {
-                    print("foi")
+                    onRoute(viewModel.getContinueRoute())
                 },
                       title: viewModel.getContinueButton()
                 )
@@ -55,8 +55,9 @@ struct HitResultsView: View {
 
 #Preview {
     @Previewable @StateObject var coordinator = AppCoordinator()
-    HitResultsView(
-        viewModel: HitResultsViewModel(
+    RollResultView(
+        viewModel: RollResultViewModel(
+            state: .wond,
             diceSet: DiceSet(totalDices: 10),
             limit: 4),
         onRoute: { route in

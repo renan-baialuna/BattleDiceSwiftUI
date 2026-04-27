@@ -8,12 +8,14 @@
 import Foundation
 import Combine
 
-class HitsRerollsSelectorViewModel: ObservableObject {
+class RerollsSelectorViewModel: ObservableObject {
     
     let diceSet: DiceSet
     let limit: Int
+    let state: FreeFlowStateEnum
     
-    init(diceSet: DiceSet, limit: Int) {
+    init(state: FreeFlowStateEnum, diceSet: DiceSet, limit: Int) {
+        self.state = state
         self.diceSet = diceSet
         self.limit = limit
     }
@@ -39,7 +41,18 @@ class HitsRerollsSelectorViewModel: ObservableObject {
     }
     
     func getRerollsTitle() -> String {
-        return String(localized: .LocalizableStrings.rerollHitsTitle)
+        switch state {
+        case .hit:
+            return String(localized: .LocalizableStrings.rerollHitsTitle)
+        case .wond: 
+            return String(localized: .LocalizableStrings.rerollWondsTitle)
+        case .save:
+            return String(localized: .LocalizableStrings.rerollSaveTitle)
+        }
+    }
+    
+    func getNextRoute() -> AppRoute {
+        return .RollSelectionWithValue(state:  self.state.next(now: self.state), value: diceSet.diceResult.countAbove(limit: limit))
     }
     
     func getRangeDescription(limit: Int) -> String {

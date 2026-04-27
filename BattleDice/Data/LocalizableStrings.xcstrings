@@ -23,6 +23,17 @@
         }
       }
     },
+    "dices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dices: "
+          }
+        }
+      }
+    },
     "hitsTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -67,6 +78,28 @@
         }
       }
     },
+    "numberSavesResume" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ saves on %2$@+"
+          }
+        }
+      }
+    },
+    "numberWondsResume" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ wonds on %2$@+"
+          }
+        }
+      }
+    },
     "rerollHitsTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -89,6 +122,17 @@
         }
       }
     },
+    "rerollSaveTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Re-Roll Saves"
+          }
+        }
+      }
+    },
     "rerollsTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -96,6 +140,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rerolls:"
+          }
+        }
+      }
+    },
+    "rerollWondsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Re-Roll Wonds"
           }
         }
       }
@@ -118,6 +173,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Roll!"
+          }
+        }
+      }
+    },
+    "savesTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saves: %1$@"
+          }
+        }
+      }
+    },
+    "saveTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Rolls"
+          }
+        }
+      }
+    },
+    "wondsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wonds: %1$@"
+          }
+        }
+      }
+    },
+    "wondTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wond Rolls"
           }
         }
       }

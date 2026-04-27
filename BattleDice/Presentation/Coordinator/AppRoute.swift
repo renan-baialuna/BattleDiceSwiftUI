@@ -16,6 +16,11 @@ enum AppRoute: Hashable {
     case HitResult(diceSet: DiceSet, limit: Int)
     case HitsRerolls(diceSet: DiceSet, limit: Int)
     case WondRoll
+    case WondRollWithValues(value: Int)
     case SaveRoll
+    case SaveRollWithValues(value: Int)
+    case RollSelectionWithValue(state: FreeFlowStateEnum, value: Int)
+    case RollResult(state: FreeFlowStateEnum, diceSet: DiceSet, limit: Int)
+    
     case FellNoPainRoll
 }

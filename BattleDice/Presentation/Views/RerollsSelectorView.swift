@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct HitsRerollsSelectorView: View {
-    @StateObject var viewModel: HitsRerollsSelectorViewModel
+struct RerollsSelectorView: View {
+    @StateObject var viewModel: RerollsSelectorViewModel
     @State var numberHits: String = "0"
     @State var selectionValue: Double = 6
     
@@ -56,11 +56,12 @@ struct HitsRerollsSelectorView: View {
 
 #Preview {
     @Previewable @StateObject var coordinator = AppCoordinator()
-    let viewModel = HitsRerollsSelectorViewModel(
+    let viewModel = RerollsSelectorViewModel(
+        state: .save,
         diceSet: DiceSet(totalDices: 10),
         limit: 4
     )
-    HitsRerollsSelectorView(
+    RerollsSelectorView(
         viewModel: viewModel,
         onRoute: { route in
             print(route)
@@ -72,3 +73,6 @@ struct HitsRerollsSelectorView: View {
     )
     .preferredColorScheme(.dark)
 }
+
+
+

@@ -38,8 +38,8 @@ struct AppCoordinatorView: View {
                     }
                     
                 case .HitRoll:
-                    RollHitsView(
-                        viewModel: RollHitsViewModel())
+                    RollSelectorView(
+                        viewModel: RollSelectorViewModel(state: .hit))
                     { route in
                         coordinator.navigate(to: route)
                     } onPop: {
@@ -47,8 +47,8 @@ struct AppCoordinatorView: View {
                     }
                 
                 case .HitRollWithValues(let value):
-                    RollHitsView(
-                        viewModel: RollHitsViewModel(),
+                    RollSelectorView(
+                        viewModel: RollSelectorViewModel(state: .hit),
                         numberHits: String(value)
                     )
                     { route in
@@ -58,23 +58,62 @@ struct AppCoordinatorView: View {
                     }
                     
                 case .HitResult(let diceSet, let limit):
-                    let viewModel = HitResultsViewModel(diceSet: diceSet, limit: limit)
-                    HitResultsView(viewModel: viewModel) { route in
+                    let viewModel = RollResultViewModel(state: .hit, diceSet: diceSet, limit: limit)
+                    RollResultView(viewModel: viewModel) { route in
                             coordinator.navigate(to: route)
                         } onPop: {
                             coordinator.pop()
                         }
 
                 case .HitsRerolls(let diceSet, let limit):
-                    let viewModel = HitsRerollsSelectorViewModel(diceSet: diceSet, limit: limit)
-                    HitsRerollsSelectorView(
+                    let viewModel = RerollsSelectorViewModel(state: .hit, diceSet: diceSet, limit: limit)
+                    RerollsSelectorView(
                         viewModel: viewModel) { route in
                             coordinator.navigate(to: route)
                         } onPop: {
                             coordinator.pop()
                         }
                     
+                case .WondRollWithValues(let value):
+                    RollSelectorView(
+                        viewModel: RollSelectorViewModel(state: .wond),
+                        numberHits: String(value)
+                    )
+                    { route in
+                        coordinator.navigate(to: route)
+                    } onPop: {
+                        coordinator.pop()
+                    }
                     
+                case .SaveRollWithValues(let value):
+                    RollSelectorView(
+                        viewModel: RollSelectorViewModel(state: .save),
+                        numberHits: String(value)
+                    )
+                    { route in
+                        coordinator.navigate(to: route)
+                    } onPop: {
+                        coordinator.pop()
+                    }
+                
+                case .RollSelectionWithValue(let state, let value):
+                    RollSelectorView(
+                        viewModel: RollSelectorViewModel(state: state),
+                        numberHits: String(value)
+                    )
+                    { route in
+                        coordinator.navigate(to: route)
+                    } onPop: {
+                        coordinator.pop()
+                    }
+                    
+                case .RollResult(let state, let diceSet, let limit):
+                    let viewModel = RollResultViewModel(state: state, diceSet: diceSet, limit: limit)
+                    RollResultView(viewModel: viewModel) { route in
+                            coordinator.navigate(to: route)
+                        } onPop: {
+                            coordinator.pop()
+                        }
                     
                 default:
                     EmptyView()
