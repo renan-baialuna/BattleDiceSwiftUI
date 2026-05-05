@@ -55,7 +55,9 @@ struct MenuFreeView: View {
             Spacer(minLength: 45)
             SpecialButton(
                 activation: {
-//                    onRoute(.Menu)
+                    onRoute(.FellNoPainSelect(
+                        initialValue: 10
+                    ))
                 },
                 title: viewModel.getFellNoPainText()
             )

@@ -64,6 +64,22 @@ struct AppCoordinatorView: View {
                             coordinator.pop()
                         }
                     
+                case .FellNoPainSelect(let initialValue):
+                    let viewModel = FellNoPainSelectionViewModel(initial: initialValue)
+                    FellNoPainSelectionView(viewModel: viewModel) { route in
+                        coordinator.navigate(to: route)
+                    } onPop: {
+                        coordinator.pop()
+                    }
+                    
+                case .FellNoPainResult(let diceSets, let hits, let damage, let wonds, let limit):
+                    let viewModel = FellNoPainResultViewModel(diceSets: diceSets, hits: hits, damage: damage, wonds: wonds, limit: limit)
+                    FellNoPainResultView(viewModel: viewModel) { route in
+                        coordinator.navigate(to: route)
+                    } onPop: {
+                        coordinator.pop()
+                    }
+                    
                 default:
                     EmptyView()
                 }

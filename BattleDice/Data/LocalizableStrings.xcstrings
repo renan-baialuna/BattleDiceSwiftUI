@@ -12,6 +12,17 @@
         }
       }
     },
+    "damagePerWond" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Damage per Wond:"
+          }
+        }
+      }
+    },
     "diceNumber" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -30,6 +41,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dices: "
+          }
+        }
+      }
+    },
+    "fnPRoll" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FnP Roll"
           }
         }
       }
@@ -195,6 +217,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save Rolls"
+          }
+        }
+      }
+    },
+    "successWonds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Success Wonds:"
+          }
+        }
+      }
+    },
+    "wondsPerModel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wonds per Model:"
           }
         }
       }

@@ -1,18 +1,18 @@
 //
-//  HShower.swift
+//  VShower.swift
 //  BattleDice
 //
-//  Created by Renan Baialuna on 24/04/26.
+//  Created by Renan Baialuna on 04/05/26.
 //
 
 import SwiftUI
 
-struct HShower: View {
+struct VShower: View {
     let title: String
     let value: String
     
     var body: some View {
-        HStack{
+        VStack{
             Text(title)
                 .font(getFont(.subTitle))
             ZStack{
@@ -27,9 +27,4 @@ struct HShower: View {
             
         }
     }
-}
-
-#Preview {
-    HShower(title: "title", value: "value")
-        .preferredColorScheme(.dark)
 }
