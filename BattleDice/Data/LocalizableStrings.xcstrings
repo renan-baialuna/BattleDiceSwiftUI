@@ -23,6 +23,28 @@
         }
       }
     },
+    "damageSimple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dam:"
+          }
+        }
+      }
+    },
+    "deathTotal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ Deaths"
+          }
+        }
+      }
+    },
     "diceNumber" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -45,6 +67,17 @@
         }
       }
     },
+    "endTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End"
+          }
+        }
+      }
+    },
     "fnPRoll" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -56,6 +89,17 @@
         }
       }
     },
+    "fnPTitleSimple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FnP"
+          }
+        }
+      }
+    },
     "hitsTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -63,6 +107,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hits: %1$@"
+          }
+        }
+      }
+    },
+    "hitsTitleSimple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hits"
           }
         }
       }
@@ -250,6 +305,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wonds: %1$@"
+          }
+        }
+      }
+    },
+    "wondsTitleSimple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wond:"
           }
         }
       }

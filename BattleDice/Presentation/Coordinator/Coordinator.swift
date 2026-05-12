@@ -78,6 +78,8 @@ struct AppCoordinatorView: View {
                         coordinator.navigate(to: route)
                     } onPop: {
                         coordinator.pop()
+                    }  onPopToRoot: {
+                        coordinator.popToRoot()
                     }
                     
                 default:

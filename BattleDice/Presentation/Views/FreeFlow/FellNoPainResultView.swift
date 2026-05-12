@@ -12,18 +12,31 @@ struct FellNoPainResultView: View {
     
     let onRoute: (AppRoute) -> Void
     let onPop: () -> Void
+    let onPopToRoot: () -> Void
     
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                VShower(title: "Hits:", value: String(viewModel.hits))
-                VShower(title: "Dam:", value: String(viewModel.damage))
-                VShower(title: "Wond:", value: String(viewModel.wonds))
-                VShower(title: "FnP:", value: String(viewModel.limit))
+                VShower(
+                    title: viewModel.getHitsTitle(),
+                    value: String(viewModel.hits)
+                )
+                VShower(
+                    title: viewModel.getDamageTitle(),
+                    value: String(viewModel.damage)
+                )
+                VShower(
+                    title: viewModel.getWondsTitle(),
+                    value: String(viewModel.wonds)
+                )
+                VShower(
+                    title: viewModel.getFnPTitle(),
+                    value: String(viewModel.limit)
+                )
                 Spacer()
             }
-            Text("\(viewModel.totalDetahs) Deaths")
+            Text(viewModel.getDeaths())
                 .font(getFont(.title))
             
             ScrollView {
@@ -55,8 +68,8 @@ struct FellNoPainResultView: View {
             
             
             SpecialButton(activation: {
-                print("end")
-            }, title: "End")
+                onPopToRoot()
+            }, title: viewModel.getButtonTitle())
         }
         .padding(20)
         .background(Color.backSec)
@@ -65,6 +78,7 @@ struct FellNoPainResultView: View {
 }
 
 #Preview {
+    @Previewable @StateObject var coordinator = AppCoordinator()
     var viewModel = FellNoPainResultViewModel(
         diceSets:
             [DiceSet(totalDices: 2),
@@ -86,6 +100,8 @@ struct FellNoPainResultView: View {
         print("foi")
     }, onPop: {
         print("foi")
+    }, onPopToRoot: {
+        coordinator.popToRoot()
     })
         .preferredColorScheme(.dark)
 }

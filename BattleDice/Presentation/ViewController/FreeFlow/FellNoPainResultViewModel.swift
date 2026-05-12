@@ -44,6 +44,31 @@ class FellNoPainResultViewModel: ObservableObject {
         }
         return totalDeath
     }
+    
+    
+    func getHitsTitle() -> String {
+        return String(localized: .LocalizableStrings.hitsTitleSimple)
+    }
+    
+    func getDamageTitle() -> String {
+        return String(localized: .LocalizableStrings.damageSimple)
+    }
+    
+    func getWondsTitle() -> String {
+        return String(localized: .LocalizableStrings.wondsTitleSimple)
+    }
+    
+    func getFnPTitle() -> String {
+        return String(localized: .LocalizableStrings.fnPTitleSimple)
+    }
+    
+    func getButtonTitle() -> String {
+        return String(localized: .LocalizableStrings.endTitle)
+    }
+    
+    func getDeaths() -> String {
+        return String(localized: .LocalizableStrings.deathTotal(String(totalDetahs)))
+    }
 }
 
 struct DiceCellInfo: Identifiable {
