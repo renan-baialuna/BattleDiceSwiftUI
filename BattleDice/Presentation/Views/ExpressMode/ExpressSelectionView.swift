@@ -13,21 +13,51 @@ struct ExpressSelectionView: View {
     @State var wondLimit: Double = 1.0
     @State var saveLimit: Double = 1.0
     
+    @StateObject var viewModel: ExpressSelectionViewModel
+    
+    let keywords = KeywordControlerSingleton().getAllKeywords()
+    
     var body: some View {
         VStack {
-            Text("30 Hits on 3+, Wonds on 3+, Saves on 5+")
+            Text(viewModel.getResume(total: Int(total) ?? 0, hit: Int(hitLimit), wond: Int(wondLimit), save: Int(saveLimit)))
                 .font(getFont(.subTitle))
                 .lineLimit(2, reservesSpace: true)
                 .multilineTextAlignment(.center)
             
             HStack {
-                VDiceStackSlider(selectionValue: $hitLimit, title: "hit")
-                VDiceStackSlider(selectionValue: $wondLimit, title: "wond")
-                VDiceStackSlider(selectionValue: $saveLimit, title: "save")
+                VDiceStackSlider(
+                    selectionValue: $hitLimit,
+                    title: viewModel.getHitTitle()
+                )
+                VDiceStackSlider(
+                    selectionValue: $wondLimit,
+                    title: viewModel.getWondTitle()
+                )
+                VDiceStackSlider(
+                    selectionValue: $saveLimit,
+                    title: viewModel.getSaveTitle()
+                )
             }
+            
             ZStack {
                 Rectangle().fill(.backMain)
-                
+                ScrollView {
+                    FlowLayout(spacing: 12) {
+                        ForEach(keywords, id: \.self) { keyword in
+                            ZStack {
+                                Capsule()
+                                    .stroke(.detailSec,lineWidth: 6)
+                                    .fill(.backMain)
+                                Text(keyword.name)
+                                    .font(getFont(.text))
+                                    .padding(3)
+                            }
+                        }
+                    }
+                    .onTapGesture {
+                        print("foi")
+                    }
+                }
             }
             
             HSelector(
@@ -46,6 +76,7 @@ struct ExpressSelectionView: View {
 
 
 #Preview {
-    ExpressSelectionView()
+    let viewModel = ExpressSelectionViewModel()
+    ExpressSelectionView(viewModel: viewModel)
         .preferredColorScheme(.dark)
 }

@@ -232,6 +232,17 @@
         }
       }
     },
+    "resumeExpress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%1$@ Hits on %2$@+, Wonds on %3$@+, Saves on %4$@+\""
+          }
+        }
+      }
+    },
     "roll" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -272,6 +283,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save Rolls"
+          }
+        }
+      }
+    },
+    "saveTitleSimple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saves:"
           }
         }
       }
